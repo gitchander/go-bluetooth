@@ -6,9 +6,10 @@ import (
 
 	"github.com/godbus/dbus/v5"
 	"github.com/godbus/dbus/v5/introspect"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/bluez/profile/adapter"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/bluez"
+	"github.com/gitchander/go-bluetooth/bluez/profile/adapter"
 )
 
 // All agent capabilities

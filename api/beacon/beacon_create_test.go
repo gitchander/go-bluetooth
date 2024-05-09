@@ -3,8 +3,9 @@ package beacon
 import (
 	"testing"
 
-	"github.com/muka/go-bluetooth/bluez/profile/device"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/gitchander/go-bluetooth/bluez/profile/device"
 )
 
 func TestCreateIBeacon(t *testing.T) {

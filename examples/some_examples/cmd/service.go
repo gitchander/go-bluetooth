@@ -14,8 +14,9 @@
 package cmd
 
 import (
-	service_example "github.com/muka/go-bluetooth/examples/service"
 	"github.com/spf13/cobra"
+
+	service_example "github.com/gitchander/go-bluetooth/examples/service"
 )
 
 // serviceCmd represents the service command

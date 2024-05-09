@@ -6,8 +6,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/muka/go-bluetooth/gen/types"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/gen/types"
 )
 
 // NewMethodParser init a MethodParser

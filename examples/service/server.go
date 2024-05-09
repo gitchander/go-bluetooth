@@ -3,10 +3,11 @@ package service_example
 import (
 	"time"
 
-	"github.com/muka/go-bluetooth/api/service"
-	"github.com/muka/go-bluetooth/bluez/profile/agent"
-	"github.com/muka/go-bluetooth/bluez/profile/gatt"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/api/service"
+	"github.com/gitchander/go-bluetooth/bluez/profile/agent"
+	"github.com/gitchander/go-bluetooth/bluez/profile/gatt"
 )
 
 func serve(adapterID string) error {

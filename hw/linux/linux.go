@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/muka/go-bluetooth/hw/linux/btmgmt"
-	"github.com/muka/go-bluetooth/hw/linux/hci"
-	"github.com/muka/go-bluetooth/hw/linux/hciconfig"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/hw/linux/btmgmt"
+	"github.com/gitchander/go-bluetooth/hw/linux/hci"
+	"github.com/gitchander/go-bluetooth/hw/linux/hciconfig"
 )
 
 type BackendType string

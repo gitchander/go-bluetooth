@@ -4,10 +4,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/muka/go-bluetooth/bluez/profile/device"
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	eddystone "github.com/suapapa/go_eddystone"
+
+	"github.com/gitchander/go-bluetooth/bluez/profile/device"
 )
 
 func testNewBeacon(t *testing.T, frame eddystone.Frame) Beacon {

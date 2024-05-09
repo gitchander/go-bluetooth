@@ -5,9 +5,10 @@ import (
 	"strings"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/bluez/profile/device"
-	"github.com/muka/go-bluetooth/util"
+
+	"github.com/gitchander/go-bluetooth/bluez"
+	"github.com/gitchander/go-bluetooth/bluez/profile/device"
+	"github.com/gitchander/go-bluetooth/util"
 )
 
 // GetDeviceByAddress return a Device object based on its address

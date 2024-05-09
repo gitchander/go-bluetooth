@@ -14,8 +14,9 @@
 package cmd
 
 import (
-	discovery_example "github.com/muka/go-bluetooth/examples/discovery"
 	"github.com/spf13/cobra"
+
+	discovery_example "github.com/gitchander/go-bluetooth/examples/discovery"
 )
 
 // discoveryCmd represents the discovery command

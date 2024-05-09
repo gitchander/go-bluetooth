@@ -4,9 +4,10 @@ import (
 	"fmt"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/bluez/profile/advertising"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/bluez"
+	"github.com/gitchander/go-bluetooth/bluez/profile/advertising"
 )
 
 // const baseAdvertismentPath = "/org/bluez/%s/apps/advertisement%d"

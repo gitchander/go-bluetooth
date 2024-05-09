@@ -6,9 +6,10 @@ import (
 	"time"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez/profile/device"
-	"github.com/muka/go-bluetooth/bluez/profile/gatt"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/bluez/profile/device"
+	"github.com/gitchander/go-bluetooth/bluez/profile/gatt"
 )
 
 // DefaultRetry times

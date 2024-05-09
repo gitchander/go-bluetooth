@@ -5,9 +5,10 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/muka/go-bluetooth/gen/filters"
-	"github.com/muka/go-bluetooth/gen/types"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/gen/filters"
+	"github.com/gitchander/go-bluetooth/gen/types"
 )
 
 func (g *ApiParser) ParseMethods(raw []byte) ([]*types.Method, error) {

@@ -14,8 +14,9 @@
 package cmd
 
 import (
-	sensortag_temperature_example "github.com/muka/go-bluetooth/examples/sensortag_temperature"
 	"github.com/spf13/cobra"
+
+	sensortag_temperature_example "github.com/gitchander/go-bluetooth/examples/sensortag_temperature"
 )
 
 // sensortagTemperatureCmd represents the sensortagTemperature command

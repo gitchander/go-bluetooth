@@ -6,9 +6,10 @@ import (
 	"sync"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/props"
-	"github.com/muka/go-bluetooth/util"
+
+	"github.com/gitchander/go-bluetooth/bluez"
+	"github.com/gitchander/go-bluetooth/props"
+	"github.com/gitchander/go-bluetooth/util"
 )
 
 var FileTransferInterface = "org.bluez.obex.FileTransfer"

@@ -6,12 +6,13 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/muka/go-bluetooth/api"
-	"github.com/muka/go-bluetooth/api/beacon"
-	"github.com/muka/go-bluetooth/bluez/profile/adapter"
-	"github.com/muka/go-bluetooth/bluez/profile/device"
 	log "github.com/sirupsen/logrus"
 	eddystone "github.com/suapapa/go_eddystone"
+
+	"github.com/gitchander/go-bluetooth/api"
+	"github.com/gitchander/go-bluetooth/api/beacon"
+	"github.com/gitchander/go-bluetooth/bluez/profile/adapter"
+	"github.com/gitchander/go-bluetooth/bluez/profile/device"
 )
 
 func Run(adapterID string, onlyBeacon bool) error {

@@ -7,11 +7,12 @@ import (
 	"time"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/api"
-	"github.com/muka/go-bluetooth/bluez/profile/adapter"
-	"github.com/muka/go-bluetooth/bluez/profile/agent"
-	"github.com/muka/go-bluetooth/bluez/profile/device"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/api"
+	"github.com/gitchander/go-bluetooth/bluez/profile/adapter"
+	"github.com/gitchander/go-bluetooth/bluez/profile/agent"
+	"github.com/gitchander/go-bluetooth/bluez/profile/device"
 )
 
 func client(adapterID, hwaddr string) (err error) {

@@ -5,8 +5,9 @@ import (
 	"encoding/hex"
 	"strings"
 
-	"github.com/muka/go-bluetooth/bluez/profile/advertising"
 	eddystone "github.com/suapapa/go_eddystone"
+
+	"github.com/gitchander/go-bluetooth/bluez/profile/advertising"
 )
 
 func initBeacon() (*Beacon, error) {

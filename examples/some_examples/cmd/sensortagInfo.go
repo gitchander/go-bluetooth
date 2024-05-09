@@ -14,8 +14,9 @@
 package cmd
 
 import (
-	sensortag_info_example "github.com/muka/go-bluetooth/examples/sensortag_info"
 	"github.com/spf13/cobra"
+
+	sensortag_info_example "github.com/gitchander/go-bluetooth/examples/sensortag_info"
 )
 
 // sensortagInfoCmd represents the sensortagInfo command

@@ -6,7 +6,8 @@ import (
 	"sync"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
+
+	"github.com/gitchander/go-bluetooth/bluez"
 )
 
 var ProfileManager1Interface = "org.bluez.ProfileManager1"

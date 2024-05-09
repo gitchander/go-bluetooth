@@ -2,8 +2,9 @@
 package btmgmt_example
 
 import (
-	"github.com/muka/go-bluetooth/hw/linux/btmgmt"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/hw/linux/btmgmt"
 )
 
 func Run() error {

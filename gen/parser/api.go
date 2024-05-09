@@ -4,9 +4,10 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/muka/go-bluetooth/gen/filters"
-	"github.com/muka/go-bluetooth/gen/types"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/gen/filters"
+	"github.com/gitchander/go-bluetooth/gen/types"
 )
 
 type ApiParser struct {

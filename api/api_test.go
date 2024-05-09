@@ -3,8 +3,9 @@ package api
 import (
 	"testing"
 
-	"github.com/muka/go-bluetooth/bluez/profile/adapter"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/gitchander/go-bluetooth/bluez/profile/adapter"
 )
 
 func TestGetAdapterID(t *testing.T) {

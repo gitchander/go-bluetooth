@@ -5,8 +5,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/muka/go-bluetooth/hw/linux/hci"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/hw/linux/hci"
 )
 
 // HciUpDownExample hciconfig up / down

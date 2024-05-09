@@ -14,8 +14,9 @@
 package cmd
 
 import (
-	hci_updown_example "github.com/muka/go-bluetooth/examples/hci_updown"
 	"github.com/spf13/cobra"
+
+	hci_updown_example "github.com/gitchander/go-bluetooth/examples/hci_updown"
 )
 
 // hciCmd represents the hci command

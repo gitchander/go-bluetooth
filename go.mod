@@ -1,4 +1,4 @@
-module github.com/muka/go-bluetooth
+module github.com/gitchander/go-bluetooth
 
 go 1.21
 

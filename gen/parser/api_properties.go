@@ -3,8 +3,9 @@ package parser
 import (
 	"regexp"
 
-	"github.com/muka/go-bluetooth/gen/types"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/gen/types"
 )
 
 func (g *ApiParser) ParseProperties(raw []byte) ([]*types.Property, error) {

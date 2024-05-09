@@ -4,9 +4,10 @@ import (
 	"path"
 	"testing"
 
-	"github.com/muka/go-bluetooth/gen/filters"
-	"github.com/muka/go-bluetooth/gen/util"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/gitchander/go-bluetooth/gen/filters"
+	"github.com/gitchander/go-bluetooth/gen/util"
 )
 
 func TestParse(t *testing.T) {

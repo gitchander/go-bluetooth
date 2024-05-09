@@ -2,8 +2,9 @@ package obex
 
 import (
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/util"
+
+	"github.com/gitchander/go-bluetooth/bluez"
+	"github.com/gitchander/go-bluetooth/util"
 )
 
 // NewObjectPush1 create a new ObjectPush1 client

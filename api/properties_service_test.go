@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/props"
-	"github.com/muka/go-bluetooth/util"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/gitchander/go-bluetooth/bluez"
+	"github.com/gitchander/go-bluetooth/props"
+	"github.com/gitchander/go-bluetooth/util"
 )
 
 type testStruct struct {

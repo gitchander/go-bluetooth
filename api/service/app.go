@@ -7,13 +7,14 @@ import (
 
 	"github.com/godbus/dbus/v5"
 	"github.com/godbus/dbus/v5/introspect"
-	"github.com/muka/go-bluetooth/api"
-	"github.com/muka/go-bluetooth/bluez"
-	"github.com/muka/go-bluetooth/bluez/profile/adapter"
-	"github.com/muka/go-bluetooth/bluez/profile/advertising"
-	"github.com/muka/go-bluetooth/bluez/profile/agent"
-	"github.com/muka/go-bluetooth/bluez/profile/gatt"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/api"
+	"github.com/gitchander/go-bluetooth/bluez"
+	"github.com/gitchander/go-bluetooth/bluez/profile/adapter"
+	"github.com/gitchander/go-bluetooth/bluez/profile/advertising"
+	"github.com/gitchander/go-bluetooth/bluez/profile/agent"
+	"github.com/gitchander/go-bluetooth/bluez/profile/gatt"
 )
 
 // AppPath default app path

@@ -3,11 +3,12 @@ package gen
 import (
 	"strings"
 
-	"github.com/muka/go-bluetooth/gen/filters"
-	"github.com/muka/go-bluetooth/gen/parser"
-	"github.com/muka/go-bluetooth/gen/types"
-	"github.com/muka/go-bluetooth/gen/util"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/gen/filters"
+	"github.com/gitchander/go-bluetooth/gen/parser"
+	"github.com/gitchander/go-bluetooth/gen/types"
+	"github.com/gitchander/go-bluetooth/gen/util"
 )
 
 // Parse bluez DBus API docs

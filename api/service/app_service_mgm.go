@@ -5,9 +5,10 @@ import (
 	"strings"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/api"
-	"github.com/muka/go-bluetooth/bluez"
 	log "github.com/sirupsen/logrus"
+
+	"github.com/gitchander/go-bluetooth/api"
+	"github.com/gitchander/go-bluetooth/bluez"
 )
 
 func (app *App) GetServices() map[dbus.ObjectPath]*Service {

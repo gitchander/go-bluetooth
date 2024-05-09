@@ -4,7 +4,8 @@ import (
 	"fmt"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/muka/go-bluetooth/util"
+
+	"github.com/gitchander/go-bluetooth/util"
 )
 
 // NewClient create a new client

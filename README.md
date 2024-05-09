@@ -3,18 +3,18 @@
 
 <img style="float:right" width="70" src="./gopher.png"> Go bluetooth API for Linux-based Bluez DBus interface.
 
-[![GoDoc](https://godoc.org/github.com/muka/go-bluetooth?status.svg)](https://godoc.org/github.com/muka/go-bluetooth)
+[![GoDoc](https://godoc.org/github.com/gitchander/go-bluetooth?status.svg)](https://godoc.org/github.com/gitchander/go-bluetooth)
 
 
 ## Bluez API versioning
 
 The version on master tracks Ubuntu bluetoothd version (v5.64). There are dedicated branches/tags with various version
 
-- [bluez 5.60](https://github.com/muka/go-bluetooth)
-- [bluez 5.62](https://github.com/muka/go-bluetooth/tree/bluez-5.62)
-- [bluez 5.63](https://github.com/muka/go-bluetooth/tree/bluez-5.63)
-- [bluez 5.64](https://github.com/muka/go-bluetooth/tree/bluez-5.64)
-- [bluez 5.65](https://github.com/muka/go-bluetooth/tree/bluez-5.65)
+- [bluez 5.60](https://github.com/gitchander/go-bluetooth)
+- [bluez 5.62](https://github.com/gitchander/go-bluetooth/tree/bluez-5.62)
+- [bluez 5.63](https://github.com/gitchander/go-bluetooth/tree/bluez-5.63)
+- [bluez 5.64](https://github.com/gitchander/go-bluetooth/tree/bluez-5.64)
+- [bluez 5.65](https://github.com/gitchander/go-bluetooth/tree/bluez-5.65)
 
 See branches for available versions.
 
@@ -40,9 +40,9 @@ High level features supported:
 ## Using this library
 
 - [TinyGo bluetooth](https://github.com/tinygo-org/bluetooth)
-- [pi-wifi](https://github.com/muka/pi-wifi)
+- [pi-wifi](https://github.com/gitchander/pi-wifi)
 
-Want to add your project? Please, add it to the [README.md](https://github.com/muka/go-bluetooth/edit/master/README.md) and open a PR!
+Want to add your project? Please, add it to the [README.md](https://github.com/gitchander/go-bluetooth/edit/master/README.md) and open a PR!
 
 ## Running examples
 
@@ -60,7 +60,7 @@ go run main.go discovery
 
 1. Clone the repository
 
-  `git clone https://github.com/muka/go-bluetooth.git`
+  `git clone https://github.com/gitchander/go-bluetooth.git`
 
 1. Retrieve the bluetooth API and generate GO code
 
