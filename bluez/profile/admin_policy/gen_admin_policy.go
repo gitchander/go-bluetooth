@@ -11,8 +11,5 @@ policy with the same method.
 
 Interface AdminPolicyStatus1 provides readonly properties to indicate the
 current values of admin policy.
-
-
-
 */
 package admin_policy

@@ -30,7 +30,6 @@ func (d *ObjectPush1) Close() {
 	d.client.Disconnect()
 }
 
-//
 // Send one local file to the remote device.
 //
 // The returned path represents the newly created transfer,
@@ -41,9 +40,8 @@ func (d *ObjectPush1) Close() {
 // with the object path, to avoid a call to GetProperties.
 //
 // Possible errors:
-//  - org.bluez.obex.Error.InvalidArguments
-//  - org.bluez.obex.Error.Failed
-//
+//   - org.bluez.obex.Error.InvalidArguments
+//   - org.bluez.obex.Error.Failed
 func (a *ObjectPush1) SendFile(sourcefile string) (string, *ObexTransfer1Properties, error) {
 
 	result := make(map[string]dbus.Variant)

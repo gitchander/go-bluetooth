@@ -100,7 +100,7 @@ func (self RFKill) SoftBlock(identifier string) error {
 	return nil
 }
 
-//SoftUnblock Removes a software block on an identifier
+// SoftUnblock Removes a software block on an identifier
 func (self RFKill) SoftUnblock(identifier string) error {
 
 	cmd := exec.Command("rfkill", "unblock", identifier)
@@ -113,7 +113,7 @@ func (self RFKill) SoftUnblock(identifier string) error {
 	return nil
 }
 
-//IsBlocked Checks if an identifier has a software or hardware block
+// IsBlocked Checks if an identifier has a software or hardware block
 func (self RFKill) IsBlocked(identifier string) bool {
 	rfks, _ := self.ListAll()
 	for _, rfk := range rfks {
@@ -126,7 +126,7 @@ func (self RFKill) IsBlocked(identifier string) bool {
 	return false
 }
 
-//IsSoftBlocked Checks if an identifier has a software block
+// IsSoftBlocked Checks if an identifier has a software block
 func (self RFKill) IsSoftBlocked(identifier string) bool {
 	rfks, _ := self.ListAll()
 	for _, rfk := range rfks {
@@ -139,7 +139,7 @@ func (self RFKill) IsSoftBlocked(identifier string) bool {
 	return false
 }
 
-//IsHardBlocked Checks if an identifier has a hardware block
+// IsHardBlocked Checks if an identifier has a hardware block
 func (self RFKill) IsHardBlocked(identifier string) bool {
 	rfks, _ := self.ListAll()
 	for _, rfk := range rfks {
@@ -152,7 +152,7 @@ func (self RFKill) IsHardBlocked(identifier string) bool {
 	return false
 }
 
-//IsBlockedAfterUnblocking Checks if an identifier has a software or hardware block after
+// IsBlockedAfterUnblocking Checks if an identifier has a software or hardware block after
 // removing a software block if it exists
 func (self RFKill) IsBlockedAfterUnblocking(identifier string) bool {
 	if self.IsBlocked(identifier) {

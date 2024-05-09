@@ -46,7 +46,7 @@ func NewHCIConfig(adapterID string) *HCIConfig {
 	return &HCIConfig{adapterID}
 }
 
-//HCIConfigResult contains details for an adapter
+// HCIConfigResult contains details for an adapter
 type HCIConfigResult struct {
 	AdapterID string
 	Enabled   bool
@@ -98,7 +98,7 @@ func parseControllerInfo(out string) HCIConfigResult {
 	return cfg
 }
 
-//Status return status information for a hci device
+// Status return status information for a hci device
 func (h *HCIConfig) Status() (*HCIConfigResult, error) {
 
 	out, err := cmd.Exec("hciconfig", h.adapterID)

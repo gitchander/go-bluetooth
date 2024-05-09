@@ -28,7 +28,7 @@ var typesMap = map[string]string{
 	"Int16":  "int16",
 }
 
-//MapType map a raw type literal otherwise difficult to parse
+// MapType map a raw type literal otherwise difficult to parse
 func MapType(rawtype string) (string, bool) {
 	res, ok := typesMap[rawtype]
 	return res, ok

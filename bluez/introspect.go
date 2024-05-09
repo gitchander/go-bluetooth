@@ -27,7 +27,7 @@ const GattDescriptor1IntrospectDataString = `
 </interface>
 `
 
-//GattCharacteristic1IntrospectDataString interface definition
+// GattCharacteristic1IntrospectDataString interface definition
 const GattCharacteristic1IntrospectDataString = `
 <interface name="org.bluez.GattCharacteristic1">
   <method name="ReadValue">
@@ -47,7 +47,7 @@ const GattCharacteristic1IntrospectDataString = `
 </interface>
 `
 
-//Device1IntrospectDataString interface definition
+// Device1IntrospectDataString interface definition
 const Device1IntrospectDataString = `
 <interface name="org.bluez.Device1">
   <method name="Disconnect"></method>

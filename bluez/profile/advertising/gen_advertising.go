@@ -13,7 +13,5 @@ data and configured the kernel to send the correct advertisement.
 
 Advertisement Data objects are registered freely and then referenced by BlueZ
 when constructing the data sent to the kernel.
-
-
 */
 package advertising

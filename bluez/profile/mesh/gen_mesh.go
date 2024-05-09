@@ -2,6 +2,5 @@
 
 /*
 BlueZ D-Bus Mesh API description [mesh-api.txt]
-
 */
 package mesh

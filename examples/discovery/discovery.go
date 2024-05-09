@@ -1,4 +1,4 @@
-//shows how to watch for new devices and list them
+// shows how to watch for new devices and list them
 package discovery_example
 
 import (
@@ -68,7 +68,7 @@ func Run(adapterID string, onlyBeacon bool) error {
 
 	}()
 
-	ch := make(chan os.Signal)
+	ch := make(chan os.Signal, 1)
 	signal.Notify(ch, os.Interrupt, os.Kill) // get notified of all OS signals
 
 	sig := <-ch

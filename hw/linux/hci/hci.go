@@ -165,7 +165,7 @@ func (s *Socket) Close() error {
 	return errors.Wrap(unix.Close(s.fd), "can't close hci socket")
 }
 
-//Up turn up a HCI device by ID
+// Up turn up a HCI device by ID
 func Up(id int) error {
 	// Create RAW HCI Socket.
 	fd, err := unix.Socket(unix.AF_BLUETOOTH, unix.SOCK_RAW, unix.BTPROTO_HCI)
@@ -178,7 +178,7 @@ func Up(id int) error {
 	return unix.Close(fd)
 }
 
-//Down turn down a HCI device by ID
+// Down turn down a HCI device by ID
 func Down(id int) error {
 	// Create RAW HCI Socket.
 	fd, err := unix.Socket(unix.AF_BLUETOOTH, unix.SOCK_RAW, unix.BTPROTO_HCI)
@@ -191,7 +191,7 @@ func Down(id int) error {
 	return unix.Close(fd)
 }
 
-//List List HCI devices
+// List List HCI devices
 func List() ([]int, error) {
 
 	var err error

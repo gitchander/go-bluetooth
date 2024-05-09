@@ -45,13 +45,13 @@ func (d *ObexSession1) Close() {
 	d.client.Disconnect()
 }
 
-//GetProperties load all available properties
+// GetProperties load all available properties
 func (d *ObexSession1) GetProperties() (*ObexSession1Properties, error) {
 	err := d.client.GetProperties(d.Properties)
 	return d.Properties, err
 }
 
-//GetProperty get a property
+// GetProperty get a property
 func (d *ObexSession1) GetProperty(name string) (dbus.Variant, error) {
 	return d.client.GetProperty(name)
 }

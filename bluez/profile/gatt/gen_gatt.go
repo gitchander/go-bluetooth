@@ -16,7 +16,5 @@ belong to that service.
 Releasing a registered GATT service is not defined yet. Any API extension
 should avoid breaking the defined API, and if possible keep an unified GATT
 remote and local services representation.
-
-
 */
 package gatt

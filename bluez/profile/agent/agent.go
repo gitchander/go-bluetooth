@@ -11,7 +11,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-//All agent capabilities
+// All agent capabilities
 const (
 	CapDisplayOnly     = "DisplayOnly"
 	CapDisplayYesNo    = "DisplayYesNo"
@@ -114,7 +114,7 @@ func ExposeAgent(conn *dbus.Conn, ag Agent1Client, caps string, setAsDefaultAgen
 	return nil
 }
 
-//ExportAgent exports the xml of a go agent to dbus
+// ExportAgent exports the xml of a go agent to dbus
 func exportAgent(conn *dbus.Conn, ag Agent1Client) error {
 
 	log.Tracef("Exposing Agent1 at %s", ag.Path())

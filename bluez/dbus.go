@@ -7,7 +7,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-//Properties dbus serializable struct
+// Properties dbus serializable struct
 // Use struct tags to control how the field is handled by Properties interface
 // Example: field `dbus:writable,emit,myCallback`
 // See Prop in github.com/godbus/dbus/v5/prop for configuration details
@@ -21,7 +21,7 @@ type Properties interface {
 	Unlock()
 }
 
-//BusType a type of DBus connection
+// BusType a type of DBus connection
 type BusType int
 
 const (
@@ -55,7 +55,7 @@ func CloseConnections() (err error) {
 	return err
 }
 
-//GetConnection get a DBus connection
+// GetConnection get a DBus connection
 func GetConnection(connType BusType) (*dbus.Conn, error) {
 	switch connType {
 	case SystemBus:

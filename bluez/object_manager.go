@@ -52,14 +52,14 @@ func (o *ObjectManager) GetManagedObjects() (map[dbus.ObjectPath]map[string]map[
 	return objs, err
 }
 
-//Register watch for signal events
+// Register watch for signal events
 func (o *ObjectManager) Register() (chan *dbus.Signal, error) {
 	path := o.client.Config.Path
 	iface := o.client.Config.Iface
 	return o.client.Register(dbus.ObjectPath(path), iface)
 }
 
-//Unregister watch for signal events
+// Unregister watch for signal events
 func (o *ObjectManager) Unregister(signal chan *dbus.Signal) error {
 	path := o.client.Config.Path
 	iface := o.client.Config.Iface

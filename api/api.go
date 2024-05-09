@@ -8,7 +8,7 @@ import (
 
 var adapters = map[string]*adapter.Adapter1{}
 
-//Exit performs a clean exit
+// Exit performs a clean exit
 func Exit() error {
 
 	for _, a := range adapters {
