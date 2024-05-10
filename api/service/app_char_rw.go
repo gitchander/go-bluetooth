@@ -74,7 +74,7 @@ func (s *Char) StopNotify() *dbus.Error {
 //	org.bluez.Error.NotAuthorized
 //	org.bluez.Error.InvalidOffset
 //	org.bluez.Error.NotSupported
-func (s *Char) ReadValue(options map[string]interface{}) ([]byte, *dbus.Error) {
+func (s *Char) ReadValue(options Options) ([]byte, *dbus.Error) {
 
 	log.Debug("Characteristic.ReadValue")
 	if s.readCallback != nil {
@@ -106,14 +106,14 @@ func (s *Char) ReadValue(options map[string]interface{}) ([]byte, *dbus.Error) {
 //	org.bluez.Error.InvalidValueLength
 //	org.bluez.Error.NotAuthorized
 //	org.bluez.Error.NotSupported
-func (s *Char) WriteValue(value []byte, options map[string]interface{}) *dbus.Error {
+func (s *Char) WriteValue(value []byte, options Options) *dbus.Error {
 
 	log.Trace("Characteristic.WriteValue")
 
 	val := value
 	if s.writeCallback != nil {
 		log.Trace("Used write callback")
-		b, err := s.writeCallback(s, value)
+		b, err := s.writeCallback(s, value, options)
 		val = b
 		if err != nil {
 			return dbus.MakeFailedError(err)

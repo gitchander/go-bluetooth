@@ -11,9 +11,13 @@ import (
 	"github.com/gitchander/go-bluetooth/bluez/profile/gatt"
 )
 
-type CharReadCallback func(c *Char, options map[string]interface{}) ([]byte, error)
-type CharWriteCallback func(c *Char, value []byte) ([]byte, error)
-type CharNotifyCallback func(c *Char, notify bool) error
+type Options map[string]interface{}
+
+type (
+	CharReadCallback   func(c *Char, options Options) ([]byte, error)
+	CharWriteCallback  func(c *Char, value []byte, options Options) ([]byte, error)
+	CharNotifyCallback func(c *Char, notify bool) error
+)
 
 type Char struct {
 	UUID    string

@@ -56,12 +56,12 @@ func serve(adapterID string) error {
 		gatt.FlagCharacteristicWrite,
 	}
 
-	char1.OnRead(service.CharReadCallback(func(c *service.Char, options map[string]interface{}) ([]byte, error) {
+	char1.OnRead(service.CharReadCallback(func(c *service.Char, options service.Options) ([]byte, error) {
 		log.Warnf("GOT READ REQUEST")
 		return []byte{42}, nil
 	}))
 
-	char1.OnWrite(service.CharWriteCallback(func(c *service.Char, value []byte) ([]byte, error) {
+	char1.OnWrite(service.CharWriteCallback(func(c *service.Char, value []byte, options service.Options) ([]byte, error) {
 		log.Warnf("GOT WRITE REQUEST")
 		return value, nil
 	}))
