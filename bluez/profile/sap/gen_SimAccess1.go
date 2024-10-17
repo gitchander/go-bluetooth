@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var SimAccess1Interface = "org.bluez.SimAccess1"
@@ -152,7 +152,7 @@ func (a *SimAccess1Properties) FromMap(props map[string]interface{}) (*SimAccess
 // FromDBusMap convert a map to an SimAccess1Properties
 func (a *SimAccess1Properties) FromDBusMap(props map[string]dbus.Variant) (*SimAccess1Properties, error) {
 	s := new(SimAccess1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

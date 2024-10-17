@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var Attention1Interface = "org.bluez.mesh.Attention1"
@@ -134,7 +134,7 @@ func (a *Attention1Properties) FromMap(props map[string]interface{}) (*Attention
 // FromDBusMap convert a map to an Attention1Properties
 func (a *Attention1Properties) FromDBusMap(props map[string]dbus.Variant) (*Attention1Properties, error) {
 	s := new(Attention1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

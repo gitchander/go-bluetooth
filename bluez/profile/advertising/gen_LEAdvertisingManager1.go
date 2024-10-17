@@ -10,7 +10,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var LEAdvertisingManager1Interface = "org.bluez.LEAdvertisingManager1"
@@ -376,7 +376,7 @@ func (a *LEAdvertisingManager1Properties) FromMap(props map[string]interface{}) 
 // FromDBusMap convert a map to an LEAdvertisingManager1Properties
 func (a *LEAdvertisingManager1Properties) FromDBusMap(props map[string]dbus.Variant) (*LEAdvertisingManager1Properties, error) {
 	s := new(LEAdvertisingManager1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

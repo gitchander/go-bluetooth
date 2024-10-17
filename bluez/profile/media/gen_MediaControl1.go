@@ -10,7 +10,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var MediaControl1Interface = "org.bluez.MediaControl1"
@@ -193,7 +193,7 @@ func (a *MediaControl1Properties) FromMap(props map[string]interface{}) (*MediaC
 // FromDBusMap convert a map to an MediaControl1Properties
 func (a *MediaControl1Properties) FromDBusMap(props map[string]dbus.Variant) (*MediaControl1Properties, error) {
 	s := new(MediaControl1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

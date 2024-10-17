@@ -1,7 +1,7 @@
 package adapter
 
 import (
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 const (
@@ -90,7 +90,7 @@ func (a *DiscoveryFilter) AddUUIDs(uuids ...string) {
 func (a *DiscoveryFilter) ToMap() map[string]interface{} {
 
 	m := make(map[string]interface{})
-	util.StructToMap(a, m)
+	mapstr.StructToMap(a, m)
 
 	if len(a.UUIDs) == 0 {
 		delete(m, "UUIDs")

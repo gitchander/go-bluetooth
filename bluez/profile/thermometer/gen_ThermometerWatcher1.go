@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var ThermometerWatcher1Interface = "org.bluez.ThermometerWatcher1"
@@ -134,7 +134,7 @@ func (a *ThermometerWatcher1Properties) FromMap(props map[string]interface{}) (*
 // FromDBusMap convert a map to an ThermometerWatcher1Properties
 func (a *ThermometerWatcher1Properties) FromDBusMap(props map[string]dbus.Variant) (*ThermometerWatcher1Properties, error) {
 	s := new(ThermometerWatcher1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

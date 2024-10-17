@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var Management1Interface = "org.bluez.mesh.Management1"
@@ -133,7 +133,7 @@ func (a *Management1Properties) FromMap(props map[string]interface{}) (*Manageme
 // FromDBusMap convert a map to an Management1Properties
 func (a *Management1Properties) FromDBusMap(props map[string]dbus.Variant) (*Management1Properties, error) {
 	s := new(Management1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

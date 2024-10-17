@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var FileTransferInterface = "org.bluez.obex.FileTransfer"
@@ -133,7 +133,7 @@ func (a *FileTransferProperties) FromMap(props map[string]interface{}) (*FileTra
 // FromDBusMap convert a map to an FileTransferProperties
 func (a *FileTransferProperties) FromDBusMap(props map[string]dbus.Variant) (*FileTransferProperties, error) {
 	s := new(FileTransferProperties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

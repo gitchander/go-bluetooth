@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var AdminPolicySet1Interface = "org.bluez.AdminPolicySet1"
@@ -133,7 +133,7 @@ func (a *AdminPolicySet1Properties) FromMap(props map[string]interface{}) (*Admi
 // FromDBusMap convert a map to an AdminPolicySet1Properties
 func (a *AdminPolicySet1Properties) FromDBusMap(props map[string]dbus.Variant) (*AdminPolicySet1Properties, error) {
 	s := new(AdminPolicySet1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

@@ -5,7 +5,7 @@ import (
 
 	"github.com/godbus/dbus/v5"
 
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 // NewClient create a new client
@@ -117,7 +117,7 @@ func (c *Client) GetProperties(props interface{}) error {
 		return fmt.Errorf("Properties.GetAll %s: %s", c.Config.Iface, err)
 	}
 
-	err = util.MapToStruct(props, result)
+	err = mapstr.MapToStruct(props, result)
 	if err != nil {
 		return fmt.Errorf("MapToStruct: %s", err)
 	}

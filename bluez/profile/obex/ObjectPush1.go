@@ -4,7 +4,7 @@ import (
 	"github.com/godbus/dbus/v5"
 
 	"github.com/gitchander/go-bluetooth/bluez"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 // NewObjectPush1 create a new ObjectPush1 client
@@ -53,7 +53,7 @@ func (a *ObjectPush1) SendFile(sourcefile string) (string, *ObexTransfer1Propert
 	}
 
 	transportProps := new(ObexTransfer1Properties)
-	err = util.MapToStruct(transportProps, result)
+	err = mapstr.MapToStruct(transportProps, result)
 
 	return sessionPath, transportProps, err
 }

@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var HealthManager1Interface = "org.bluez.HealthManager1"
@@ -133,7 +133,7 @@ func (a *HealthManager1Properties) FromMap(props map[string]interface{}) (*Healt
 // FromDBusMap convert a map to an HealthManager1Properties
 func (a *HealthManager1Properties) FromDBusMap(props map[string]dbus.Variant) (*HealthManager1Properties, error) {
 	s := new(HealthManager1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

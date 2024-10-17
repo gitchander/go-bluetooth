@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var Input1Interface = "org.bluez.Input1"
@@ -171,7 +171,7 @@ func (a *Input1Properties) FromMap(props map[string]interface{}) (*Input1Propert
 // FromDBusMap convert a map to an Input1Properties
 func (a *Input1Properties) FromDBusMap(props map[string]dbus.Variant) (*Input1Properties, error) {
 	s := new(Input1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

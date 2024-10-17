@@ -7,7 +7,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 type testStruct struct {
@@ -20,7 +20,7 @@ type testStruct struct {
 
 func (s testStruct) ToMap() (map[string]interface{}, error) {
 	m := map[string]interface{}{}
-	util.StructToMap(s, m)
+	mapstr.StructToMap(s, m)
 	return m, nil
 }
 

@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var GattDescriptor1Interface = "org.bluez.GattDescriptor1"
@@ -229,7 +229,7 @@ func (a *GattDescriptor1Properties) FromMap(props map[string]interface{}) (*Gatt
 // FromDBusMap convert a map to an GattDescriptor1Properties
 func (a *GattDescriptor1Properties) FromDBusMap(props map[string]dbus.Variant) (*GattDescriptor1Properties, error) {
 	s := new(GattDescriptor1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

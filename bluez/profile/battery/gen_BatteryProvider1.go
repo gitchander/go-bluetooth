@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var BatteryProvider1Interface = "org.bluez.BatteryProvider1"
@@ -153,7 +153,7 @@ func (a *BatteryProvider1Properties) FromMap(props map[string]interface{}) (*Bat
 // FromDBusMap convert a map to an BatteryProvider1Properties
 func (a *BatteryProvider1Properties) FromDBusMap(props map[string]dbus.Variant) (*BatteryProvider1Properties, error) {
 	s := new(BatteryProvider1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

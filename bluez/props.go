@@ -6,7 +6,7 @@ import (
 	"github.com/godbus/dbus/v5"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 type WatchableClient interface {
@@ -71,7 +71,7 @@ func WatchProperties(wprop WatchableClient) (chan *PropertyChanged, error) {
 						x := reflect.ValueOf(val.Value())
 						wprop.ToProps().Lock()
 						// map[*]variant -> map[*]interface{}
-						ok, err := util.AssignMapVariantToInterface(f, x)
+						ok, err := mapstr.AssignMapVariantToInterface(f, x)
 						if err != nil {
 							log.Errorf("Failed to set %s: %s", f.String(), err)
 							continue

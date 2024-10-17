@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var NetworkServer1Interface = "org.bluez.NetworkServer1"
@@ -133,7 +133,7 @@ func (a *NetworkServer1Properties) FromMap(props map[string]interface{}) (*Netwo
 // FromDBusMap convert a map to an NetworkServer1Properties
 func (a *NetworkServer1Properties) FromDBusMap(props map[string]dbus.Variant) (*NetworkServer1Properties, error) {
 	s := new(NetworkServer1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

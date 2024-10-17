@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var ProvisionAgent1Interface = "org.bluez.mesh.ProvisionAgent1"
@@ -201,7 +201,7 @@ func (a *ProvisionAgent1Properties) FromMap(props map[string]interface{}) (*Prov
 // FromDBusMap convert a map to an ProvisionAgent1Properties
 func (a *ProvisionAgent1Properties) FromDBusMap(props map[string]dbus.Variant) (*ProvisionAgent1Properties, error) {
 	s := new(ProvisionAgent1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

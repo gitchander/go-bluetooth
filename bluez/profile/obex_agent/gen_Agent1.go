@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var Agent1Interface = "org.bluez.obex.Agent1"
@@ -134,7 +134,7 @@ func (a *Agent1Properties) FromMap(props map[string]interface{}) (*Agent1Propert
 // FromDBusMap convert a map to an Agent1Properties
 func (a *Agent1Properties) FromDBusMap(props map[string]dbus.Variant) (*Agent1Properties, error) {
 	s := new(Agent1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

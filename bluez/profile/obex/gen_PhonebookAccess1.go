@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var PhonebookAccess1Interface = "org.bluez.obex.PhonebookAccess1"
@@ -240,7 +240,7 @@ func (a *PhonebookAccess1Properties) FromMap(props map[string]interface{}) (*Pho
 // FromDBusMap convert a map to an PhonebookAccess1Properties
 func (a *PhonebookAccess1Properties) FromDBusMap(props map[string]dbus.Variant) (*PhonebookAccess1Properties, error) {
 	s := new(PhonebookAccess1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var Synchronization1Interface = "org.bluez.obex.Synchronization1"
@@ -133,7 +133,7 @@ func (a *Synchronization1Properties) FromMap(props map[string]interface{}) (*Syn
 // FromDBusMap convert a map to an Synchronization1Properties
 func (a *Synchronization1Properties) FromDBusMap(props map[string]dbus.Variant) (*Synchronization1Properties, error) {
 	s := new(Synchronization1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

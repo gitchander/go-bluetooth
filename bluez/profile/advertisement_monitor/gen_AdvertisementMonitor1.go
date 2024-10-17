@@ -9,7 +9,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/props"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 var AdvertisementMonitor1Interface = "org.bluez.AdvertisementMonitor1"
@@ -279,7 +279,7 @@ func (a *AdvertisementMonitor1Properties) FromMap(props map[string]interface{}) 
 // FromDBusMap convert a map to an AdvertisementMonitor1Properties
 func (a *AdvertisementMonitor1Properties) FromDBusMap(props map[string]dbus.Variant) (*AdvertisementMonitor1Properties, error) {
 	s := new(AdvertisementMonitor1Properties)
-	err := util.MapToStruct(s, props)
+	err := mapstr.MapToStruct(s, props)
 	return s, err
 }
 

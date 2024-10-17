@@ -8,7 +8,7 @@ import (
 
 	"github.com/gitchander/go-bluetooth/bluez"
 	"github.com/gitchander/go-bluetooth/bluez/profile/device"
-	"github.com/gitchander/go-bluetooth/util"
+	"github.com/gitchander/go-bluetooth/utils/mapstr"
 )
 
 // GetDeviceByAddress return a Device object based on its address
@@ -129,7 +129,7 @@ func parseDevice(path dbus.ObjectPath, propsMap map[string]dbus.Variant) (*devic
 		return nil, err
 	}
 
-	err = util.MapToStruct(dev.Properties, propsMap)
+	err = mapstr.MapToStruct(dev.Properties, propsMap)
 	if err != nil {
 		return nil, err
 	}
