@@ -55,7 +55,6 @@ func serve(adapterID string) error {
 	{
 		agent1 := app.Agent()
 		as, ok := agent1.(*agent.SimpleAgent)
-		fmt.Println("SimpleAgent >", ok)
 		if ok {
 			as.SetPassKey(237710)
 			//as.SetPassCode("54321")
@@ -96,6 +95,8 @@ func serve(adapterID string) error {
 	if err != nil {
 		return err
 	}
+
+	fmt.Println("*******************")
 
 	char1, err := service1.NewChar("3344")
 	if err != nil {
@@ -171,6 +172,18 @@ func serve(adapterID string) error {
 	}
 
 	log.Infof("Exposed service %s", service1.Properties.UUID)
+
+	// Advertise
+	{
+		adv := app.GetAdvertisement()
+
+		printJSON("adv:", adv)
+
+		//adv.Discoverable = true
+
+		// adv.MinInterval = 99
+		// adv.MaxInterval = 123
+	}
 
 	timeout := uint32(6 * 3600) // 6h
 	log.Infof("Advertising for %ds...", timeout)

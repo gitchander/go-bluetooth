@@ -13,9 +13,9 @@ func (app *App) Advertise(timeout uint32) (func(), error) {
 
 	adv := app.GetAdvertisement()
 
-	for _, svc := range app.GetServices() {
-		adv.ServiceUUIDs = append(adv.ServiceUUIDs, svc.UUID)
-	}
+	// for _, svc := range app.GetServices() {
+	// 	adv.ServiceUUIDs = append(adv.ServiceUUIDs, svc.UUID)
+	// }
 
 	cancel, err := api.ExposeAdvertisement(app.adapterID, adv, timeout)
 	return cancel, err

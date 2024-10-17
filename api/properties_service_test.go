@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -54,9 +53,9 @@ func TestParseTag(t *testing.T) {
 
 	cfg := prop.propsConfig["test"]
 
-	for field, cfg := range cfg {
-		fmt.Printf("%s: %++v\n", field, cfg)
-	}
+	// for field, cfg := range cfg {
+	// 	fmt.Printf("%s: %+v\n", field, cfg)
+	// }
 
 	assert.True(t, cfg["ToOmit"].Skip)
 	assert.True(t, cfg["ToOmit"].Writable)

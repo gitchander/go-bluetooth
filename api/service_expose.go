@@ -1,6 +1,8 @@
 package api
 
 import (
+	// "fmt"
+
 	"github.com/godbus/dbus/v5"
 	"github.com/godbus/dbus/v5/introspect"
 	"github.com/godbus/dbus/v5/prop"
@@ -49,6 +51,15 @@ func ExposeDBusService(s ExposedDBusService) (err error) {
 	if err != nil {
 		return err
 	}
+
+	// {
+	// 	props := s.GetProperties()
+	// 	mm, _ := props.ToMap()
+	// 	fmt.Println("props:")
+	// 	for key, val := range mm {
+	// 		fmt.Printf("%v: %v\n", key, val)
+	// 	}
+	// }
 
 	err = s.DBusProperties().AddProperties(s.Interface(), s.GetProperties())
 	if err != nil {

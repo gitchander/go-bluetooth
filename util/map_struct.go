@@ -139,12 +139,24 @@ func mapStructField(obj interface{}, name string, value dbus.Variant) error {
 
 // MapToStruct converts a map[string]dbus.Variant to a struct
 func MapToStruct(s interface{}, m map[string]dbus.Variant) error {
+
+	//fmt.Println("<open>")
+	fmt.Printf("<open> %T\n", s)
+
+	i := 0
+
 	for k, v := range m {
+
+		fmt.Printf("[%d]: (k, v) => (%q, %#v)\n", i, k, v.Value())
+		i++
+
 		err := mapStructField(s, k, v)
 		if err != nil {
 			return err
 		}
 	}
+	fmt.Println("<close>")
+
 	return nil
 }
 
