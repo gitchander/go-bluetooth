@@ -48,7 +48,7 @@ func (a *LEAdvertisement1Properties) AddServiceData(code string, data []uint8) {
 	a.ServiceData[code] = data
 }
 
-func (a *LEAdvertisement1Properties) AddManifacturerData(code uint16, data []uint8) {
+func (a *LEAdvertisement1Properties) AddManufacturerData(code uint16, data []uint8) {
 	if a.ManufacturerData == nil {
 		a.ManufacturerData = make(map[uint16]interface{})
 	}

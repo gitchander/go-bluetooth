@@ -59,7 +59,7 @@ func CreateIBeacon(uuid string, major uint16, minor uint16, measuredPower uint16
 		Type:          "proximity",
 	}
 
-	b.props.AddManifacturerData(appleBit, frames)
+	b.props.AddManufacturerData(appleBit, frames)
 
 	return b, nil
 }

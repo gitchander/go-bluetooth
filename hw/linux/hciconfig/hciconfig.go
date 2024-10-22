@@ -1,7 +1,6 @@
 package hciconfig
 
 import (
-	"errors"
 	"strings"
 
 	"github.com/gitchander/go-bluetooth/hw/linux/cmd"
@@ -15,8 +14,12 @@ func GetAdapters() ([]HCIConfigResult, error) {
 		return nil, err
 	}
 
+	// if len(out) == 0 {
+	// 	return nil, errors.New("hciconfig provided no response")
+	// }
+
 	if len(out) == 0 {
-		return nil, errors.New("hciconfig provided no response")
+		return nil, nil // no adapters
 	}
 
 	list := []HCIConfigResult{}
