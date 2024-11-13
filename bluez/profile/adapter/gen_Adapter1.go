@@ -51,7 +51,6 @@ func NewAdapter1FromAdapterID(adapterID string) (*Adapter1, error) {
 		},
 	)
 	a.Properties = new(Adapter1Properties)
-
 	_, err := a.GetProperties()
 	if err != nil {
 		return nil, err
@@ -59,9 +58,8 @@ func NewAdapter1FromAdapterID(adapterID string) (*Adapter1, error) {
 	return a, nil
 }
 
-/*
-Adapter1 Adapter hierarchy
-*/
+// Adapter1 Adapter hierarchy
+
 type Adapter1 struct {
 	client                 *bluez.Client
 	propertiesSignal       chan *dbus.Signal
@@ -75,10 +73,7 @@ type Adapter1 struct {
 type Adapter1Properties struct {
 	lock sync.RWMutex `dbus:"ignore"`
 
-	/*
-		Address The Bluetooth device address.
-	*/
-	Address string
+	Address string // The Bluetooth device address.
 
 	/*
 		AddressType The Bluetooth  Address Type. For dual-mode and BR/EDR

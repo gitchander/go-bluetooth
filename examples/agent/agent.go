@@ -16,7 +16,7 @@ func Run(deviceAddress, adapterID string) error {
 
 	defer api.Exit()
 
-	//Connect DBus System bus
+	// Connect DBus System bus
 	conn, err := dbus.SystemBus()
 	if err != nil {
 		return err

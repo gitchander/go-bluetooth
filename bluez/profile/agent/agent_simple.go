@@ -2,6 +2,7 @@ package agent
 
 import (
 	"fmt"
+	"sync/atomic"
 
 	"github.com/godbus/dbus/v5"
 	log "github.com/sirupsen/logrus"
@@ -9,15 +10,21 @@ import (
 	"github.com/gitchander/go-bluetooth/bluez/profile/adapter"
 )
 
-var agentInstances = 0
+const (
+	AgentBasePath             = "/agent/simple%d"
+	SimpleAgentPinCode        = "0000"
+	SimpleAgentPassKey uint32 = 1024
+)
 
-const AgentBasePath = "/agent/simple%d"
-const SimpleAgentPinCode = "0000"
-const SimpleAgentPassKey uint32 = 1024
+var agentInstances atomic.Uint32
+
+func nextAgentInstances() int {
+	return int(agentInstances.Add(1) - 1)
+}
 
 func NextAgentPath() dbus.ObjectPath {
-	p := dbus.ObjectPath(fmt.Sprintf(AgentBasePath, agentInstances))
-	agentInstances += 1
+	ai := nextAgentInstances()
+	p := dbus.ObjectPath(fmt.Sprintf(AgentBasePath, ai))
 	return p
 }
 
@@ -47,6 +54,8 @@ type SimpleAgent struct {
 	passKey uint32
 }
 
+var _ Agent1Client = &SimpleAgent{}
+
 func (self *SimpleAgent) SetPassKey(passkey uint32) {
 	self.passKey = passkey
 }
@@ -71,11 +80,11 @@ func (self *SimpleAgent) Interface() string {
 	return Agent1Interface
 }
 
-func (self *SimpleAgent) Release() *dbus.Error {
+func (self *SimpleAgent) Release() error {
 	return nil
 }
 
-func (self *SimpleAgent) RequestPinCode(path dbus.ObjectPath) (string, *dbus.Error) {
+func (self *SimpleAgent) RequestPinCode(path dbus.ObjectPath) (pincode string, err error) {
 
 	log.Debugf("SimpleAgent: RequestPinCode: %s", path)
 
@@ -91,16 +100,17 @@ func (self *SimpleAgent) RequestPinCode(path dbus.ObjectPath) (string, *dbus.Err
 		return "", dbus.MakeFailedError(err)
 	}
 
-	log.Debugf("SimpleAgent: Returning pin code: %s", self.pinCode)
-	return self.pinCode, nil
+	pincode = self.pinCode
+	log.Debugf("SimpleAgent: Returning pin code: %s", pincode)
+	return pincode, nil
 }
 
-func (self *SimpleAgent) DisplayPinCode(device dbus.ObjectPath, pincode string) *dbus.Error {
+func (self *SimpleAgent) DisplayPinCode(device dbus.ObjectPath, pincode string) error {
 	log.Info(fmt.Sprintf("SimpleAgent: DisplayPinCode (%s, %s)", device, pincode))
 	return nil
 }
 
-func (self *SimpleAgent) RequestPasskey(path dbus.ObjectPath) (uint32, *dbus.Error) {
+func (self *SimpleAgent) RequestPasskey(path dbus.ObjectPath) (passkey uint32, err error) {
 
 	adapterID, err := adapter.ParseAdapterID(path)
 	if err != nil {
@@ -115,15 +125,18 @@ func (self *SimpleAgent) RequestPasskey(path dbus.ObjectPath) (uint32, *dbus.Err
 	}
 
 	log.Debugf("RequestPasskey: returning %d", self.passKey)
-	return self.passKey, nil
+
+	passkey = self.passKey
+
+	return passkey, nil
 }
 
-func (self *SimpleAgent) DisplayPasskey(device dbus.ObjectPath, passkey uint32, entered uint16) *dbus.Error {
+func (self *SimpleAgent) DisplayPasskey(device dbus.ObjectPath, passkey uint32, entered uint16) error {
 	log.Debugf("SimpleAgent: DisplayPasskey %s, %06d entered %d", device, passkey, entered)
 	return nil
 }
 
-func (self *SimpleAgent) RequestConfirmation(path dbus.ObjectPath, passkey uint32) *dbus.Error {
+func (self *SimpleAgent) RequestConfirmation(path dbus.ObjectPath, passkey uint32) error {
 
 	log.Debugf("SimpleAgent: RequestConfirmation (%s, %06d)", path, passkey)
 
@@ -143,17 +156,17 @@ func (self *SimpleAgent) RequestConfirmation(path dbus.ObjectPath, passkey uint3
 	return nil
 }
 
-func (self *SimpleAgent) RequestAuthorization(device dbus.ObjectPath) *dbus.Error {
+func (self *SimpleAgent) RequestAuthorization(device dbus.ObjectPath) error {
 	log.Debugf("SimpleAgent: RequestAuthorization (%s)", device)
 	return nil
 }
 
-func (self *SimpleAgent) AuthorizeService(device dbus.ObjectPath, uuid string) *dbus.Error {
+func (self *SimpleAgent) AuthorizeService(device dbus.ObjectPath, uuid string) error {
 	log.Debugf("SimpleAgent: AuthorizeService (%s, %s)", device, uuid) // directly authorized
 	return nil
 }
 
-func (self *SimpleAgent) Cancel() *dbus.Error {
+func (self *SimpleAgent) Cancel() error {
 	log.Debugf("SimpleAgent: Cancel")
 	return nil
 }

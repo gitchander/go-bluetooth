@@ -17,8 +17,8 @@ var AgentManager1Interface = "org.bluez.AgentManager1"
 // Args:
 
 func NewAgentManager1() (*AgentManager1, error) {
-	a := new(AgentManager1)
-	a.client = bluez.NewClient(
+
+	client := bluez.NewClient(
 		&bluez.Config{
 			Name:  "org.bluez",
 			Iface: AgentManager1Interface,
@@ -26,12 +26,16 @@ func NewAgentManager1() (*AgentManager1, error) {
 			Bus:   bluez.SystemBus,
 		},
 	)
+
+	a := &AgentManager1{
+		client: client,
+	}
+
 	return a, nil
 }
 
-/*
-AgentManager1 Agent Manager hierarchy
-*/
+// AgentManager1 Agent Manager hierarchy
+
 type AgentManager1 struct {
 	client                 *bluez.Client
 	propertiesSignal       chan *dbus.Signal

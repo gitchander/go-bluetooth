@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"strings"
+	"sync/atomic"
 
 	"github.com/godbus/dbus/v5"
 	"github.com/godbus/dbus/v5/introspect"
@@ -17,10 +18,26 @@ import (
 	"github.com/gitchander/go-bluetooth/bluez/profile/gatt"
 )
 
-// AppPath default app path
-var AppPath = "/%s/apps/%d"
+//------------------------------------------------------------------------------
 
-var appCounter = 0
+type IntCounter struct {
+	v atomic.Uint32
+}
+
+func (p *IntCounter) NextInt() int {
+	return int(p.v.Add(1) - 1) // 0, 1, 2, 3, 4, ...
+}
+
+var appCounter IntCounter
+
+func nextAppID() int {
+	return appCounter.NextInt()
+}
+
+//------------------------------------------------------------------------------
+
+// AppPath default app path
+const AppPath = "/%s/apps/%d"
 
 // AppOptions contains App options
 type AppOptions struct {
@@ -29,6 +46,23 @@ type AppOptions struct {
 	AgentSetAsDefault bool
 	UUIDSuffix        string
 	UUID              string
+}
+
+// App wraps a bluetooth application exposing services
+type App struct {
+	path    dbus.ObjectPath
+	Options AppOptions
+
+	adapterID string
+	adapter   *adapter.Adapter1
+
+	agent agent.Agent1Client
+
+	conn          *dbus.Conn
+	objectManager *api.DBusObjectManager
+	services      map[dbus.ObjectPath]*Service
+	advertisement *advertising.LEAdvertisement1Properties
+	gm            *gatt.GattManager1
 }
 
 // NewApp initialize a new bluetooth service (app)
@@ -54,7 +88,7 @@ func NewApp(options AppOptions) (*App, error) {
 		fmt.Sprintf(
 			AppPath,
 			app.adapterID,
-			appCounter,
+			nextAppID(),
 		),
 	)
 
@@ -66,33 +100,19 @@ func NewApp(options AppOptions) (*App, error) {
 		app.Options.AgentCaps = agent.CapKeyboardDisplay
 	}
 
-	appCounter++
+	err := app.init()
+	if err != nil {
+		return nil, err
+	}
 
-	return app, app.init()
-}
-
-// App wraps a bluetooth application exposing services
-type App struct {
-	path    dbus.ObjectPath
-	Options AppOptions
-
-	adapterID string
-	adapter   *adapter.Adapter1
-
-	agent agent.Agent1Client
-
-	conn          *dbus.Conn
-	objectManager *api.DBusObjectManager
-	services      map[dbus.ObjectPath]*Service
-	advertisement *advertising.LEAdvertisement1Properties
-	gm            *gatt.GattManager1
+	return app, nil
 }
 
 func (app *App) init() error {
 
 	// log.Tracef("Exposing %s", app.Path())
+	// log.Debug("Load adapter")
 
-	// log.Trace("Load adapter")
 	a, err := adapter.NewAdapter1FromAdapterID(app.adapterID)
 	if err != nil {
 		return err
@@ -118,6 +138,49 @@ func (app *App) init() error {
 	app.objectManager = om
 
 	return err
+}
+
+// Close close the app
+func (app *App) Close() {
+
+	if app.agent != nil {
+
+		err := agent.RemoveAgent(app.agent)
+		if err != nil {
+			log.Warnf("RemoveAgent: %s", err)
+		}
+
+		app.agent.Release()
+		// if err != nil {
+		// 	log.Warnf("Agent1.Release: %s", err)
+		// }
+	}
+
+	if app.gm != nil {
+		err1 := app.gm.UnregisterApplication(app.Path())
+		if err1 != nil {
+			log.Warnf("GattManager1.UnregisterApplication: %s", err1)
+		}
+	}
+
+	//--------------------------------------------------------------------------
+
+	// !!!
+	// ERRO Properties.GetAll org.bluez.Adapter1: dbus: connection closed by user
+	// Disabled for reconnect (multiple call NewApp)
+	// todo close connection
+	// !!!
+
+	if false {
+		if app.conn != nil {
+			err := app.conn.Close()
+			if err != nil {
+				log.Warnf("dbus.Conn.Close:: %s", err)
+			}
+		}
+	}
+	//--------------------------------------------------------------------------
+
 }
 
 // GenerateUUID generate a 128bit UUID
@@ -211,36 +274,4 @@ func (app *App) Run() (err error) {
 	err = gm.RegisterApplication(app.Path(), options)
 
 	return err
-}
-
-// Close close the app
-func (app *App) Close() {
-
-	if app.agent != nil {
-
-		err := agent.RemoveAgent(app.agent)
-		if err != nil {
-			log.Warnf("RemoveAgent: %s", err)
-		}
-
-		// err =
-		app.agent.Release()
-		// if err != nil {
-		// 	log.Warnf("Agent1.Release: %s", err)
-		// }
-	}
-
-	if app.gm != nil {
-		err1 := app.gm.UnregisterApplication(app.Path())
-		if err1 != nil {
-			log.Warnf("GattManager1.UnregisterApplication: %s", err1)
-		}
-	}
-
-	if app.conn != nil {
-		err := app.conn.Close()
-		if err != nil {
-			log.Warnf("dbus.Conn.Close:: %s", err)
-		}
-	}
 }

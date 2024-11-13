@@ -104,7 +104,7 @@ func (c *Client) SetProperty(p string, v interface{}) error {
 // GetProperties load all the properties for an interface
 func (c *Client) GetProperties(props interface{}) error {
 
-	if !c.isConnected() {
+	if !(c.isConnected()) {
 		err := c.Connect()
 		if err != nil {
 			return err

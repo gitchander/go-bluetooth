@@ -22,15 +22,15 @@ const (
 )
 
 type Agent1Client interface {
-	Release() *dbus.Error                                                    // Callback doesn't trigger on unregister
-	RequestPinCode(device dbus.ObjectPath) (pincode string, err *dbus.Error) // Triggers for pairing when SSP is off and cap != CAP_NO_INPUT_NO_OUTPUT
-	DisplayPinCode(device dbus.ObjectPath, pincode string) *dbus.Error
-	RequestPasskey(device dbus.ObjectPath) (passkey uint32, err *dbus.Error) // SSP on, toolz.AGENT_CAP_KEYBOARD_ONLY
-	DisplayPasskey(device dbus.ObjectPath, passkey uint32, entered uint16) *dbus.Error
-	RequestConfirmation(device dbus.ObjectPath, passkey uint32) *dbus.Error
-	RequestAuthorization(device dbus.ObjectPath) *dbus.Error
-	AuthorizeService(device dbus.ObjectPath, uuid string) *dbus.Error
-	Cancel() *dbus.Error
+	Release() error                                                    // Callback doesn't trigger on unregister
+	RequestPinCode(device dbus.ObjectPath) (pincode string, err error) // Triggers for pairing when SSP is off and cap != CAP_NO_INPUT_NO_OUTPUT
+	DisplayPinCode(device dbus.ObjectPath, pincode string) error
+	RequestPasskey(device dbus.ObjectPath) (passkey uint32, err error) // SSP on, toolz.AGENT_CAP_KEYBOARD_ONLY
+	DisplayPasskey(device dbus.ObjectPath, passkey uint32, entered uint16) error
+	RequestConfirmation(device dbus.ObjectPath, passkey uint32) error
+	RequestAuthorization(device dbus.ObjectPath) error
+	AuthorizeService(device dbus.ObjectPath, uuid string) error
+	Cancel() error
 	Path() dbus.ObjectPath
 	Interface() string
 }

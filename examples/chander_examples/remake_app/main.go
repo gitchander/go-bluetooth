@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -19,13 +20,25 @@ func main() {
 
 	log.SetLevel(log.DebugLevel)
 
-	err := serve(adapterID)
+	err := serve(context.Background(), adapterID)
 	if err != nil {
 		log.Error(err)
+		return
+	}
+
+	// fmt.Println("stop")
+	// time.Sleep(60 * time.Second)
+	// fmt.Println("start")
+	time.Sleep(2 * time.Second)
+
+	err = serve(context.Background(), adapterID)
+	if err != nil {
+		log.Error(err)
+		return
 	}
 }
 
-func serve(adapterID string) error {
+func serve(ctx context.Context, adapterID string) error {
 
 	var (
 		//agentCap = agent.CapDisplayOnly
@@ -96,8 +109,6 @@ func serve(adapterID string) error {
 		return err
 	}
 
-	fmt.Println("*******************")
-
 	char1, err := service1.NewChar("3344")
 	if err != nil {
 		return err
@@ -114,7 +125,6 @@ func serve(adapterID string) error {
 		char1.Properties.Flags = []string{
 			gatt.FlagCharacteristicEncryptRead,
 			gatt.FlagCharacteristicEncryptWrite,
-
 			gatt.FlagCharacteristicNotify,
 		}
 
@@ -176,13 +186,7 @@ func serve(adapterID string) error {
 	// Advertise
 	{
 		adv := app.GetAdvertisement()
-
 		printJSON("adv:", adv)
-
-		//adv.Discoverable = true
-
-		// adv.MinInterval = 99
-		// adv.MaxInterval = 123
 	}
 
 	timeout := uint32(6 * 3600) // 6h
@@ -198,11 +202,18 @@ func serve(adapterID string) error {
 
 	r := random.NewRandomer(random.NextRand())
 
-	for {
-		r.FillBytes(data)
-		char1.WriteValue(data, nil)
+	dur := 2 * time.Second
+	cctx, cancelFunc := context.WithDeadline(ctx, time.Now().Add(dur))
+	defer cancelFunc()
 
-		time.Sleep(10 * time.Second)
+	for {
+		select {
+		case <-cctx.Done():
+			return nil
+		case <-time.After(10 * time.Second):
+			r.FillBytes(data)
+			char1.WriteValue(data, nil)
+		}
 	}
 }
 
