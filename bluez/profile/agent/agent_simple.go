@@ -80,11 +80,11 @@ func (self *SimpleAgent) Interface() string {
 	return Agent1Interface
 }
 
-func (self *SimpleAgent) Release() error {
+func (self *SimpleAgent) Release() *dbus.Error {
 	return nil
 }
 
-func (self *SimpleAgent) RequestPinCode(path dbus.ObjectPath) (pincode string, err error) {
+func (self *SimpleAgent) RequestPinCode(path dbus.ObjectPath) (pincode string, derr *dbus.Error) {
 
 	log.Debugf("SimpleAgent: RequestPinCode: %s", path)
 
@@ -105,12 +105,12 @@ func (self *SimpleAgent) RequestPinCode(path dbus.ObjectPath) (pincode string, e
 	return pincode, nil
 }
 
-func (self *SimpleAgent) DisplayPinCode(device dbus.ObjectPath, pincode string) error {
+func (self *SimpleAgent) DisplayPinCode(device dbus.ObjectPath, pincode string) *dbus.Error {
 	log.Info(fmt.Sprintf("SimpleAgent: DisplayPinCode (%s, %s)", device, pincode))
 	return nil
 }
 
-func (self *SimpleAgent) RequestPasskey(path dbus.ObjectPath) (passkey uint32, err error) {
+func (self *SimpleAgent) RequestPasskey(path dbus.ObjectPath) (passkey uint32, derr *dbus.Error) {
 
 	adapterID, err := adapter.ParseAdapterID(path)
 	if err != nil {
@@ -131,12 +131,12 @@ func (self *SimpleAgent) RequestPasskey(path dbus.ObjectPath) (passkey uint32, e
 	return passkey, nil
 }
 
-func (self *SimpleAgent) DisplayPasskey(device dbus.ObjectPath, passkey uint32, entered uint16) error {
+func (self *SimpleAgent) DisplayPasskey(device dbus.ObjectPath, passkey uint32, entered uint16) *dbus.Error {
 	log.Debugf("SimpleAgent: DisplayPasskey %s, %06d entered %d", device, passkey, entered)
 	return nil
 }
 
-func (self *SimpleAgent) RequestConfirmation(path dbus.ObjectPath, passkey uint32) error {
+func (self *SimpleAgent) RequestConfirmation(path dbus.ObjectPath, passkey uint32) *dbus.Error {
 
 	log.Debugf("SimpleAgent: RequestConfirmation (%s, %06d)", path, passkey)
 
@@ -156,17 +156,17 @@ func (self *SimpleAgent) RequestConfirmation(path dbus.ObjectPath, passkey uint3
 	return nil
 }
 
-func (self *SimpleAgent) RequestAuthorization(device dbus.ObjectPath) error {
+func (self *SimpleAgent) RequestAuthorization(device dbus.ObjectPath) *dbus.Error {
 	log.Debugf("SimpleAgent: RequestAuthorization (%s)", device)
 	return nil
 }
 
-func (self *SimpleAgent) AuthorizeService(device dbus.ObjectPath, uuid string) error {
+func (self *SimpleAgent) AuthorizeService(device dbus.ObjectPath, uuid string) *dbus.Error {
 	log.Debugf("SimpleAgent: AuthorizeService (%s, %s)", device, uuid) // directly authorized
 	return nil
 }
 
-func (self *SimpleAgent) Cancel() error {
+func (self *SimpleAgent) Cancel() *dbus.Error {
 	log.Debugf("SimpleAgent: Cancel")
 	return nil
 }
